@@ -26,5 +26,6 @@ urlpatterns = [
     path('customer/<int:id>/update',views.update_customer,name='update_customer'),
     path('customer/<int:id>/delete',views.delete_customer,name='delete_customer'),
     path('customer/create',views.create_customer,name='create_customer'),
-    path('customer/<int:id>/products',views.get_customer_products,name='customer_products')
+    path('customer/<int:id>/products',views.get_customer_products,name='customer_products'),
+    path('product/<int:product_id>',views.get_product_details,name='warranty')
 ]

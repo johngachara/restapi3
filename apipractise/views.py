@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from apipractise.models import Customer
-from apipractise.serializers import Customerserializer, Customerproductsserializer
+from apipractise.models import Customer, Product
+from apipractise.serializers import Customerserializer, Customerproductsserializer, Productserializer
 
 
 # Create your views here.
@@ -67,3 +67,12 @@ def get_customer_products(request,id):
         return Response({"Customer":serializer.data})
     except:
         return Response({"Error" :"Customer with given id not found"})
+
+@api_view(['GET'])
+def get_product_details(request,product_id):
+    try:
+        product = Product.objects.get(pk=product_id)
+        serializer = Productserializer(instance=product)
+        return Response({"Product details":serializer.data})
+    except:
+        return Response({"Error":"Product with given id not found"})

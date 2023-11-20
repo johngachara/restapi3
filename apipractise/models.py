@@ -25,7 +25,7 @@ class Product(models.Model):
 
 class Warranty(models.Model):
     warranty_provider = models.CharField(max_length=20,default='Jumia')
-    product_warranty = models.OneToOneField(Product,on_delete=models.CASCADE,related_name='product')
+    product_warranty = models.OneToOneField(Product,on_delete=models.CASCADE,related_name='warranty_provider')
     duration = models.IntegerField()
     def __str__(self):
         return self.warranty_provider
